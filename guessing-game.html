@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Guessing Game</h1>
+<p>Letters guessed so far: <span id="sendbackLetter"></span></p>
+<h3>Wins: <span  id="wins"></span></h3>
+<h3>Losses: <span id="losses"></span></h3>
+<h3>Guesses left: <span id="guesses-left"></span></h3>
+
+
+<script>
+    var wins = 0;
+    var losses = 0;
+    var guessesLeft = 9;
+    
+    var computerLetter = "t"; //generate a letter
+    
+    document.onkeyup = function myFunction(event) {
+        var letterGuessed = event.key;
+        if (computerLetter == letterGuessed){
+            wins++;
+            document.getElementById("wins").innerHTML = wins;
+            guessesLeft = 9;
+            document.getElementById("guesses-left").innerHTML = guessesLeft;
+            //generate a new letter        
+        }
+        else {
+            if (guessesLeft == 1){
+                losses++;
+                document.getElementById("losses").innerHTML = losses;
+                guessesLeft = 9;
+                document.getElementById("guesses-left").innerHTML = guessesLeft;
+                //generate a new letter
+            }
+            else {
+                guessesLeft--;
+                document.getElementById("guesses-left").innerHTML = guessesLeft;
+                //add this incorrect letter to an array
+            }
+        }
+        document.getElementById("sendbackLetter").innerHTML = letterGuessed;  // loop through array of incorrect guesses to display your guesses so far
+    }
+
+    function generateLetter(){
+        
+    }
+</script>
+
+
+
+</body>
+</html>
