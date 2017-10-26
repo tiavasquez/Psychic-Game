@@ -3,6 +3,8 @@
 <body>
 
 <h1>Guessing Game</h1>
+<p>Begin the game by clicking Start and then typing a letter.</p>
+<button onclick="generateLetter()">Start</button>
 <p>Letters guessed so far: <span id="sendbackLetter"></span></p>
 <h3>Wins: <span  id="wins"></span></h3>
 <h3>Losses: <span id="losses"></span></h3>
@@ -14,7 +16,7 @@
     var losses = 0;
     var guessesLeft = 9;
     
-    var computerLetter = "t"; //generate a letter
+    var computerLetter;
     
     document.onkeyup = function myFunction(event) {
         var letterGuessed = event.key;
@@ -23,7 +25,7 @@
             document.getElementById("wins").innerHTML = wins;
             guessesLeft = 9;
             document.getElementById("guesses-left").innerHTML = guessesLeft;
-            //generate a new letter        
+            generateLetter();        
         }
         else {
             if (guessesLeft == 1){
@@ -31,7 +33,7 @@
                 document.getElementById("losses").innerHTML = losses;
                 guessesLeft = 9;
                 document.getElementById("guesses-left").innerHTML = guessesLeft;
-                //generate a new letter
+                generateLetter();
             }
             else {
                 guessesLeft--;
@@ -43,8 +45,10 @@
     }
 
     function generateLetter(){
-        
+       computerLetter = String.fromCharCode(Math.floor(Math.random() * (122 - 97)) + 97);
+       alert("random letter: "+ computerLetter);
     }
+
 </script>
 
 
